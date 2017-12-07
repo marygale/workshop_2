@@ -17,8 +17,12 @@
 <div class="container">
   <div class="row align-items-center">
     <div class="offset-md-2 col-sm-8 text-center">
-      <h1>Make a guess</h1>
-        <?php include 'guess_form.php'; ?>
+
+<div class="jumbotron" style="margin-top:100px;">
+    <h1 class="display-3">Make a guess</h1>
+      <?php include 'guess_form.php'; ?>
+</div>
+
     </div>
     <div class="col-sm-2">
     </div>

@@ -27,7 +27,6 @@
         header('Location: index.php' , true, 302);
     }
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -43,42 +42,49 @@
 
 <div class="container">
   <div class="row align-items-center">
-    <div class="offset-md-2 col-sm-8 text-center">
+    <div class="offset-md-2 col-sm-8 text-center jumbotron" style="margin-top:50px;">
       
 
 <div class="row">
 	<div class="col-sm">
-		<h1>Your guess is: <?php echo $guess; ?></h1>
+		<p class="lead">Your guess is:  <span class="badge badge-primary"><?php echo $guess; ?></span></p>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-sm">  
-
-
-        
+	<div class="col-sm">
 
 
     <?php if($success) : ?>
 
         <?php if($match): ?>
-            <h1>Yey! Correct Guess!</h1>
+            <div class="alert alert-success" role="alert">
+                <h1 class="display-3">Yey! Correct Guess!</h1>
+            </div>
         <?php else: ?>
-            <h1>Incorrect Guess</h1>
+            <div class="alert alert-warning" role="alert">
+                <h1 class="display-3">Incorrect Guess</h1>
+            </div>
         <?php endif;?>
 
     <?php else: ?>
-        <h1>Invalid Number Input!</h1>
-        <h2>Must be a number and ranges 1-5</h2>
+
+        <div class="alert alert-danger" role="alert">
+                <h1>Invalid Number Input!</h1>
+                <h2>Must be a number and ranges 1-5</h2>
+        </div>
+
+        
     <?php endif;?>
 
 
 
-        <h1>My Guess is: <?php echo $random_int; ?></h1>
+        <p class="lead">My Guess is: <span class="badge badge-info"><?php echo $random_int; ?></span></p>
 	</div>
 </div>
 
 
+    <hr class="my-4">
     <?php include 'guess_form.php'; ?>
 
 
