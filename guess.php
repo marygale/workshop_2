@@ -9,8 +9,6 @@
         $guess = $_GET['guess'];
         $random_int = rand($min,$max);
 
-
-
         if((filter_var($guess, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false)){
             $success = FALSE;
         }else{
