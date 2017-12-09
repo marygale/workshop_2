@@ -99,17 +99,21 @@
         <p class="lead">My Guess is: <span class="badge badge-info"><?php echo $random_int; ?></span></p>
 	**/ ?>	
 		
-		<?php if($_SESSION["try_count"] == 0) : ?>
-		<p class="lead">No More Try</p>
-		<?php endif; ?>
+		
+		
+		
 		
 	</div>
 </div>
 
 
     <hr class="my-4">
-    <?php include 'guess_form.php'; ?>
-
+	    
+	    <?php if($_SESSION["try_count"] == 0) : ?>
+	        <p class="lead">No More Try</p>
+	    <?php else: ?>
+	        <?php include 'guess_form.php'; ?>
+            <?php endif; ?>
 
     </div>
     <div class="col-sm-2">
