@@ -1,5 +1,7 @@
 <?php
+  session_start();
   $try = FALSE;
+  $_SESSION["try_count"] = 3;
 ?>
 <!doctype html>
 <html lang="en">
