@@ -7,7 +7,8 @@
         $match = FALSE;
         $try = TRUE;
         $guess = $_GET['guess'];
-        $random_int = rand($min,$max);
+        $random_int = 5;
+	$high_low = FALSE;
 
         if((filter_var($guess, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false)){
             $success = FALSE;
@@ -16,11 +17,25 @@
         }
 
         if($success){
-            if($guess == $random_int)
-                $match = TRUE;
-            else
-                $match = FALSE;
+            if($guess == $random_int){
+	     $match = TRUE;
+	    }else{
+		    $match = FALSE;
+		if($guess > $random_int){
+	          $high_low = TRUE;
+	         }else{
+		$high_low = FALSE;	
+		}
+	    }
+                
+		
+		
+		
         }
+	    
+	
+	    
+	    
     }else{
         header('Location: index.php' , true, 302);
     }
@@ -63,6 +78,13 @@
             <div class="alert alert-warning" role="alert">
                 <h1 class="display-3">Incorrect Guess</h1>
             </div>
+		<?php if($high_low) : ?>
+                    <p class="lead">Your Guess is too high</p>
+		<?php else : ?>
+		    <p class="lead">Your Guess is too low</p>
+		<?php endif; ?>
+		
+		
         <?php endif;?>
 
     <?php else: ?>
