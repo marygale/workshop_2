@@ -111,7 +111,7 @@
 	    
 	    <?php if($_SESSION["try_count"] == 0) : ?>
 	    <h2>No More Try</h2>
-	    <p><a href="https://bagasbas-workshop-2.herokuapp.com">Try Again</a></p>
+	    <p><a href="https://bagasbas-workshop-2.herokuapp.com"><button type="button" class="btn">Try Again</button></a></p>
 	    <?php else: ?>
 	        <?php include 'guess_form.php'; ?>
             <?php endif; ?>
