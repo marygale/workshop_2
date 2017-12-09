@@ -43,7 +43,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Make a guess</title>
+    <title>Bagasbas, Angelo Dan F. - Workshop 2</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -98,8 +98,10 @@
     <?php endif;?>
 
 
-
+<?php /**
         <p class="lead">My Guess is: <span class="badge badge-info"><?php echo $random_int; ?></span></p>
+	**/ ?>	
+		
 	</div>
 </div>
 
