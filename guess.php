@@ -7,7 +7,7 @@
         $match = FALSE;
         $try = TRUE;
         $guess = $_GET['guess'];
-        $random_int = 5;
+        $random_int = 3;
 	$high_low = FALSE;
 
         if((filter_var($guess, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false)){
