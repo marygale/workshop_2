@@ -1,7 +1,7 @@
 <?php
   session_start();
   $try = FALSE;
-  $_SESSION["started"] = TRUE;
+  $_SESSION["started"] = FALSE;
   $_SESSION["try_count"] = 3;
 ?>
 <!doctype html>
