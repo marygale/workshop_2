@@ -1,6 +1,8 @@
 <?php
+    session_start();
     $try = FALSE;
     if(!empty($_GET)){
+	$_SESSION["started"] = TRUE;
         $min = 1;
         $max = 5;
         $success = FALSE;
@@ -27,14 +29,9 @@
 		$high_low = FALSE;	
 		}
 	    }
-                
-		
-		
-		
         }
 	    
-	
-	    
+	    $_SESSION["try_count"] -= 1; 
 	    
     }else{
         header('Location: index.php' , true, 302);
@@ -101,6 +98,10 @@
 <?php /**
         <p class="lead">My Guess is: <span class="badge badge-info"><?php echo $random_int; ?></span></p>
 	**/ ?>	
+		
+		<?php if($_SESSION["try_count"] == 0) : ?>
+		<p class="lead">No More Try</p>
+		<?php endif; ?>
 		
 	</div>
 </div>
