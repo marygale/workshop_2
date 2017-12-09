@@ -110,7 +110,8 @@
     <hr class="my-4">
 	    
 	    <?php if($_SESSION["try_count"] == 0) : ?>
-	        <p class="lead">No More Try</p>
+	    <h2>No More Try</h2>
+	    <p><a href="https://bagasbas-workshop-2.herokuapp.com">Try Again</a></p>
 	    <?php else: ?>
 	        <?php include 'guess_form.php'; ?>
             <?php endif; ?>
