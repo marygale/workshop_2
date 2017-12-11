@@ -80,10 +80,10 @@
 
                     <?php if (!(filter_var($guess, FILTER_VALIDATE_INT))) : ?>
                         <h2>Your guess is not a number</h2>
-                    <?php endif; ?>
 
-                    <?php if( ($min <= $guess) && ($guess <= $max)) : ?>
-                        <h2>Must be a number and ranges 1-5</h2>
+
+                    <?php elseif( !(($min <= $guess) && ($guess <= $max)) ) : ?>
+                        <h2>Your input must range 1-5</h2>
                     <?php endif; ?>
                     
             </div>

@@ -9,8 +9,14 @@
     </div>
 
         <?php if (filter_var($guess, FILTER_VALIDATE_INT)) : ?>
+
+        <?php $high_low = ($guess > $random_int) ? TRUE : FALSE; ?>
+
             <p class="lead">Your guess is too <?= ($high_low) ? "high" : "low" ?></p>
         <?php else: ?>
-            <p class="lead">Your guess is not a number</p>
+            <p class="lead">Your guess is not a number</h2>
         <?php endif; ?>
+
+
+
 <?php endif;?>
