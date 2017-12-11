@@ -1,6 +1,6 @@
 <?php if($match): ?>
     <div class="alert alert-success" role="alert">
-        <h1 class="display-3">Congratulations - You are right!</h1>
+        <h1 class="display-7">Congratulations - You are right!</h1>
     </div>
 <?php else: ?>
 
