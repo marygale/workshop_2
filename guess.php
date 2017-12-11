@@ -10,7 +10,7 @@
         $try = TRUE;
         $guess = $_GET['guess'];
         $random_int = 3;
-	$high_low = FALSE;
+        $high_low = FALSE;
 
         if((filter_var($guess, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false)){
             $success = FALSE;
@@ -20,15 +20,15 @@
 
         if($success){
             if($guess == $random_int){
-	     $match = TRUE;
-	    }else{
-		    $match = FALSE;
-		if($guess > $random_int){
-	          $high_low = TRUE;
-	         }else{
-		$high_low = FALSE;	
-		}
-	    }
+                $match = TRUE;
+            }else{
+                $match = FALSE;
+                if($guess > $random_int){
+                    $high_low = TRUE;
+                }else{
+                    $high_low = FALSE;	
+                }
+            }
         }
 	    
 	    $_SESSION["try_count"] -= 1; 
@@ -55,66 +55,60 @@
     <div class="offset-md-2 col-sm-8 text-center jumbotron" style="margin-top:50px;">
       
 
-<div class="row">
-	<div class="col-sm">
-		<p class="lead">Your guess is:  <span class="badge badge-primary"><?php echo $guess; ?></span></p>
-	</div>
-</div>
 
-<div class="row">
-	<div class="col-sm">
+<?php if($_SESSION["try_count"] > 0) : ?>
 
 
-    <?php if($success) : ?>
+    <div class="row">
+    	<div class="col-sm">
+    		<p class="lead">Your guess is:  <span class="badge badge-primary"><?php echo $guess; ?></span></p>
+    	</div>
+    </div>
 
-        <?php if($match): ?>
-            <div class="alert alert-success" role="alert">
-                <h1 class="display-3">Yey! Correct Guess!</h1>
-            </div>
+    <div class="row">
+    	<div class="col-sm">
+
+
+        <?php if($success) : ?>
+
+            <?php include 'match.php'; ?>
+
         <?php else: ?>
-            <div class="alert alert-warning" role="alert">
-                <h1 class="display-3">Incorrect Guess</h1>
+
+            <div class="alert alert-danger" role="alert">
+                    <h1>Invalid Input!</h1>
+
+                    <?php if (!(filter_var($guess, FILTER_VALIDATE_INT))) : ?>
+                        <h2>Your guess is not a number</h2>
+                    <?php endif; ?>
+
+                    <?php if( ($min <= $guess) && ($guess <= $max)) : ?>
+                        <h2>Must be a number and ranges 1-5</h2>
+                    <?php endif; ?>
+                    
             </div>
-		<?php if($high_low) : ?>
-                    <p class="lead">Your Guess is too high</p>
-		<?php else : ?>
-		    <p class="lead">Your Guess is too low</p>
-		<?php endif; ?>
-		
-		
+
+            
         <?php endif;?>
-
-    <?php else: ?>
-
-        <div class="alert alert-danger" role="alert">
-                <h1>Invalid Number Input!</h1>
-                <h2>Must be a number and ranges 1-5</h2>
-        </div>
-
-        
-    <?php endif;?>
-
-
-<?php /**
-        <p class="lead">My Guess is: <span class="badge badge-info"><?php echo $random_int; ?></span></p>
-	**/ ?>	
-		
-		
-		
-		
-		
-	</div>
-</div>
+    		
+    		
+    	</div>
+    </div>
 
 
     <hr class="my-4">
-	    
-	    <?php if($_SESSION["try_count"] == 0) : ?>
-	    <h2>No More Try</h2>
-	    <p><a href="https://bagasbas-workshop-2.herokuapp.com"><button type="button" class="btn btn-primary">Try Again</button></a></p>
+	  
+            <?php include 'guess_form.php'; ?>
+
 	    <?php else: ?>
-	        <?php include 'guess_form.php'; ?>
-            <?php endif; ?>
+
+                <?php include 'match.php'; ?>
+
+            <hr class="my-4">
+            <h2>No More Tries</h2>
+            <p><a href="try_again.php"><button type="button" class="btn btn-primary btn-lg">Try Again</button></a></p>
+
+        <?php endif; ?>
 
     </div>
     <div class="col-sm-2">
