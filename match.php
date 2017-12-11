@@ -8,13 +8,26 @@
         <h1 class="display-3">Incorrect Guess</h1>
     </div>
 
+        
+
+
+
+        <?php if(empty($_GET['guess'])): ?>
+            <p class="lead">Missing guess parameter</p>
+        <?php else:?>
+
+
         <?php if (filter_var($guess, FILTER_VALIDATE_INT)) : ?>
 
-        <?php $high_low = ($guess > $random_int) ? TRUE : FALSE; ?>
+            <?php $high_low = ($guess > $random_int) ? TRUE : FALSE; ?>
 
-            <p class="lead">Your guess is too <?= ($high_low) ? "high" : "low" ?></p>
-        <?php else: ?>
-            <p class="lead">Your guess is not a number</h2>
+                <p class="lead">Your guess is too <?= ($high_low) ? "high" : "low" ?></p>
+            <?php else: ?>
+                <p class="lead">Your guess is not a number</p>
+        <?php endif; ?>
+
+
+
         <?php endif; ?>
 
 

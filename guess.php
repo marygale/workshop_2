@@ -33,8 +33,6 @@
 	    
 	    $_SESSION["try_count"] -= 1; 
 	    
-    }else{
-        header('Location: index.php' , true, 302);
     }
 ?>
 <!doctype html>
@@ -78,13 +76,20 @@
             <div class="alert alert-danger" role="alert">
                     <h1>Invalid Input!</h1>
 
-                    <?php if (!(filter_var($guess, FILTER_VALIDATE_INT))) : ?>
-                        <h2>Your guess is not a number</h2>
+                        <?php if(empty($_GET['guess'])): ?>
+                            <p class="lead">Missing guess parameter</p>
+                        <?php else: ?>
 
 
-                    <?php elseif( !(($min <= $guess) && ($guess <= $max)) ) : ?>
-                        <h2>Your input must range 1-5</h2>
-                    <?php endif; ?>
+                            <?php if (!(filter_var($guess, FILTER_VALIDATE_INT))) : ?>
+                                <h2>Your guess is not a number</h2>
+                            <?php elseif( !(($min <= $guess) && ($guess <= $max)) ) : ?>
+                                <h2>Your input must range 1-5</h2>
+                            <?php endif; ?>
+
+
+
+                        <?php endif; ?>
                     
             </div>
 
